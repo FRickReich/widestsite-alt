@@ -15,11 +15,11 @@
           "instances": 1,
           "port_mappings": [
             {
-              "container_port": 5000
+              "container_port": 3000
             }
           ],
           "env": {
-            "LCB_DATABASE_URI": "mongodb://mongodb.backend.gandhi/gandhi"
+            "DATABASE_URL": "mongodb://mongodb.backend.gandhi/gandhi"
           },
           "dependencies": [
             "../backend/mongodb"

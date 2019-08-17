@@ -1,0 +1,29 @@
+version: '3'
+services:
+
+  web:
+    # image: mikemichel/letschat
+    image: node:8
+    volumes:
+      - ./:/usr/src/app
+    working_dir: /usr/src/app
+    command: sh -c 'npm install; npm rebuild node-sass; node app'
+    ports:
+      - "80:3000"
+    depends_on:
+      - mongo
+    networks:
+      - all
+    environment:
+      DATABASE_URL: "mongodb://mongo/db"
+
+  mongo:
+    image: mongo:3
+    command: mongod --smallfiles
+    networks:
+      - all
+    volumes:
+      - /tmp/db/:/data/db
+      - /tmp/config:/data/configdb
+networks:
+  all:

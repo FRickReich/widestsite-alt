@@ -2,7 +2,7 @@ version: '3'
 services:
 
   web:
-    # image: mikemichel/letschat
+    # image: frickreich/gandhi
     image: node:8
     volumes:
       - ./:/usr/src/app
@@ -25,5 +25,15 @@ services:
     volumes:
       - /tmp/db/:/data/db
       - /tmp/config:/data/configdb
+
+  mongoexpress:
+    image: mongo-express
+    restart: always
+    ports:
+      - "8081:8081"
+    links:
+      - 'mongo:mongo'
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo
 networks:
   all:

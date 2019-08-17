@@ -6,13 +6,13 @@
       "apps": [
         {
           "id": "node",
+          "image": "frickreich/gandhi",
+          "instances": 1,
+          "mem": 512,
           "domain": {
-            "type": "HTTP",
             "uri": "gandhi.sloppy.zone"
           },
-          "mem": 1024,
-          "image": "mikemichel/lets-chat",
-          "instances": 1,
+          "ssl": false,
           "port_mappings": [
             {
               "container_port": 3000
@@ -21,9 +21,37 @@
           "env": {
             "DATABASE_URL": "mongodb://mongodb.backend.gandhi/gandhi"
           },
+          "volumes": [
+          ],
+          "health_checks": [
+          ],
           "dependencies": [
             "../backend/mongodb"
-          ]
+          ],
+          "logging": null
+        },
+        {
+          "id": "mongoexpress",
+          "image": "mongo-express",
+          "instances": 1,
+          "mem": 128,
+          "domain": {
+            "uri": "frederikreich-mongoexpress.sloppy.zone"
+          },
+          "ssl": false,
+          "port_mappings": [
+            {
+              "container_port": 8081
+            }
+          ],
+          "env": {
+            "ME_CONFIG_MONGODB_SERVER": "mongodb.backend.gandhi"
+          },
+          "volumes": [
+          ],
+          "health_checks": [
+          ],
+          "logging": null
         }
       ]
     },
@@ -32,15 +60,13 @@
       "apps": [
         {
           "id": "mongodb",
-          "mem": 512,
           "image": "mongo",
           "instances": 1,
-          "port_mappings": [
-            {
-              "container_port": 27017
-            }
-          ],
-		  "volumes": [
+          "mem": 256,
+          "domain": {
+          },
+          "ssl": false,
+          "volumes": [
             {
               "container_path": "/data/db",
               "size": "8GB"
@@ -49,8 +75,11 @@
               "container_path": "/data/configdb",
               "size": "8GB"
             }
-          ]
-          }
+          ],
+          "health_checks": [
+          ],
+          "logging": null
+        }
       ]
     }
   ]

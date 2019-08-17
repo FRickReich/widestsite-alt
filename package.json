@@ -1,11 +1,11 @@
 {
-  "name": "MERN-boilerplate",
-  "version": "1.0.0",
-  "description": "MERN stack project boilerplate",
-  "author": "Eugene Cheung",
+  "name": "gandhi",
+  "version": "0.1.0",
+  "description": "",
+  "author": "F. Rick Reich",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arkon/MERN-boilerplate.git"
+    "url": "git+https://github.com/FRickReich/gandhi"
   },
   "license": "MIT",
   "private": true,

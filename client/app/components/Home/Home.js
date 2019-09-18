@@ -99,7 +99,7 @@ class Home extends Component {
           )) }
         </ul>
 
-        <button onClick={this.newCounter}>New counter</button>
+        <button onClick={this.newCounter}>Add counter</button>
       </>
     );
   }

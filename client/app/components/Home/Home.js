@@ -6,7 +6,7 @@ import 'whatwg-fetch';
 import {
     setInStorage,
     getFromStorage,
-  } from '../../utils/storage';
+} from '../../utils/storage';
 
 class Home extends Component 
 {
@@ -15,19 +15,17 @@ class Home extends Component
         super(props);
 
         this.state =
-            {
-                isLoading: true,
-                token: '',
-                signUpError: '',
-                signInError: '',
-                signInEmail: '',
-                signInPassword: '',
-                signUpEmail: '',
-                signUpPassword: '',
-            };
+        {
+            isLoading: true,
+            token: '',
+            signUpError: '',
+            signInError: '',
+            signInEmail: '',
+            signInPassword: '',
+            signUpEmail: '',
+            signUpPassword: '',
+        };
 
-        this.onTextboxChangeSignInEmail = this.onTextboxChangeSignInEmail.bind(this);
-        this.onTextboxChangeSignInPassword = this.onTextboxChangeSignInPassword.bind(this);
         this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
         this.onTextboxChangeSignUpPassword = this.onTextboxChangeSignUpPassword.bind(this);
     
@@ -36,44 +34,40 @@ class Home extends Component
         this.logout = this.logout.bind(this);
     }
 
-    componentDidMount() {
+    componentDidMount()
+    {
         const obj = getFromStorage('gandhi');
-        if (obj && obj.token) {
-          const { token } = obj;
-          // Verify token
-          fetch('/api/account/verify?token=' + token)
+
+        if (obj && obj.token) 
+        {
+            const { token } = obj;
+            
+            // Verify token
+            fetch('/api/account/verify?token=' + token)
             .then(res => res.json())
-            .then(json => {
-              if (json.success) {
-                this.setState({
-                  token,
-                  isLoading: false
-                });
-              } else {
-                this.setState({
-                  isLoading: false,
-                });
-              }
+            .then(json => 
+            {
+                if (json.success) 
+                {
+                    this.setState({
+                        token,
+                        isLoading: false
+                    });
+                }
+                else
+                {
+                    this.setState({
+                        isLoading: false,
+                    });
+                }
             });
-        } else {
-          this.setState({
-            isLoading: false,
-          });
         }
-      }
-
-    onTextboxChangeSignInEmail(event) 
-    {
-        this.setState({
-            signInEmail: event.target.value,
-        });
-    }
-
-    onTextboxChangeSignInPassword(event) 
-    {
-        this.setState({
-            signInPassword: event.target.value,
-        });
+        else 
+        {
+            this.setState({
+                isLoading: false,
+            });
+        }
     }
 
     onTextboxChangeSignUpEmail(event) 
@@ -90,74 +84,98 @@ class Home extends Component
         });
     }
 
-    logout() {
+    logout() 
+    {
         this.setState({
-          isLoading: true,
+            isLoading: true,
         });
-        const obj = getFromStorage('gandhi');
-        if (obj && obj.token) {
-          const { token } = obj;
-          // Verify token
-          fetch('/api/account/logout?token=' + token)
-            .then(res => res.json())
-            .then(json => {
-              if (json.success) {
-                this.setState({
-                  token: '',
-                  isLoading: false
-                });
-              } else {
-                this.setState({
-                  isLoading: false,
-                });
-              }
-            });
-        } else {
-          this.setState({
-            isLoading: false,
-          });
-        }
-      }
 
-    onSignIn() {
+        const obj = getFromStorage('gandhi');
+
+        if (obj && obj.token) 
+        {
+            const { token } = obj;
+          
+            // Verify token
+            fetch('/api/account/logout?token=' + token)
+            .then(res => res.json())
+            .then(json => 
+            {
+                if (json.success) 
+                {
+                    localStorage.removeItem('gandhi');
+
+                    this.setState({
+                        token: '',
+                        isLoading: false
+                    });
+                }
+                else
+                {
+                    this.setState({
+                        isLoading: false,
+                    });
+                }
+            });
+        }
+        else
+        {
+            this.setState({
+                isLoading: false,
+            });
+        }
+    }
+
+    onSignIn() 
+    {
         // Grab state
         const {
-          signInEmail,
-          signInPassword,
+            signUpEmail,
+            signUpPassword,
         } = this.state;
+
         this.setState({
-          isLoading: true,
+            isLoading: true,
         });
+
         // Post request to backend
-        fetch('/api/account/signin', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            email: signInEmail,
-            password: signInPassword,
-          }),
+        fetch('/api/account/signin',
+        {
+            method: 'POST',
+            headers:
+            {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: signUpEmail,
+                password: signUpPassword,
+            }),
         }).then(res => res.json())
-          .then(json => {
+        .then(json => 
+        {
             console.log('json', json);
-            if (json.success) {
-              setInStorage('gandhi', { token: json.token });
-              this.setState({
-                signInError: json.message,
-                isLoading: false,
-                signInPassword: '',
-                signInEmail: '',
-                token: json.token,
-              });
-            } else {
-              this.setState({
-                signInError: json.message,
-                isLoading: false,
-              });
+        
+            if (json.success)
+            {
+                setInStorage('gandhi', { token: json.token });
+                
+                this.setState({
+                    signInError: json.message,
+                    isLoading: false,
+                    signUpPassword: '',
+                    signUpEmail: '',
+                    token: json.token,
+                });
             }
-          });
-      }
+            else
+            {
+                this.setState({
+                    signInError: json.message,
+                    isLoading: false,
+                });
+            }
+        });
+    }
 
     onSignUp()
     {
@@ -166,13 +184,17 @@ class Home extends Component
             signUpEmail,
             signUpPassword,
         } = this.state;
+    
         this.setState({
             isLoading: true,
         });
+    
         // Post request to backend
-        fetch('/api/account/signup', {
+        fetch('/api/account/signup',
+        {
             method: 'POST',
-            headers: {
+            headers:
+            {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -180,25 +202,27 @@ class Home extends Component
                 password: signUpPassword,
             }),
         }).then(res => res.json())
-            .then(json =>
+        .then(json =>
+        {
+            console.log('json', json);
+                
+            if (json.success)
             {
-                console.log('json', json);
-                if (json.success)
-                {
-                    this.setState({
-                        signUpError: json.message,
-                        isLoading: false,
-                        signUpEmail: '',
-                        signUpPassword: '',
-                    });
-                } else
-                {
-                    this.setState({
-                        signUpError: json.message,
-                        isLoading: false,
-                    });
-                }
-            });
+                this.setState({
+                    signUpError: json.message,
+                    isLoading: false,
+                    signUpEmail: '',
+                    signUpPassword: '',
+                });
+            }
+            else    
+            {
+                this.setState({
+                    signUpError: json.message,
+                    isLoading: false,
+                });
+            }
+        });
     }
 
     render()
@@ -213,59 +237,54 @@ class Home extends Component
             signUpPassword,
             signUpError,
         } = this.state;
+
         if (isLoading)
         {
             return (<div><p>Loading...</p></div>);
         }
+
         if (!token)
         {
             return (
-                <div>
                     <div>
                         {
-                            (signInError) ? (
+                            (signInError) ?
+                            (
                                 <p>{ signInError }</p>
-                            ) : (null)
+                            )
+                            :
+                            (null)
                         }
-                        <p>Sign In</p>
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            value={ signInEmail }
-                            onChange={ this.onTextboxChangeSignInEmail }
-                        />
-                        <br />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            value={ signInPassword }
-                            onChange={ this.onTextboxChangeSignInPassword }
-                        />
-                        <br />
-                        <button onClick={this.onSignIn}>Sign In</button>
-                    </div>
-                    <br />
-                    <br />
-                    <div>
                         {
-                            (signUpError) ? (
+                            (signUpError) ?
+                            (
                                 <p>{ signUpError }</p>
-                            ) : (null)
+                            )
+                            :
+                            (null)
                         }
                         <p>Sign Up</p>
+
                         <input
                             type="email"
                             placeholder="Email"
                             value={ signUpEmail }
                             onChange={ this.onTextboxChangeSignUpEmail }
-                        /><br />
+                        />
+                        
+                        <br />
+                        
                         <input
                             type="password"
                             placeholder="Password"
                             value={ signUpPassword }
                             onChange={ this.onTextboxChangeSignUpPassword }
-                        /><br />
+                        />
+                        
+                        <br />
+                        
                         <button onClick={ this.onSignUp }>Sign Up</button>
+                        <button onClick={ this.onSignIn }>Sign In</button>
                     </div>
                 </div>
             );

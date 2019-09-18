@@ -1,3 +1,5 @@
+'use strict';
+
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
@@ -7,15 +9,18 @@ const UserSchema = new mongoose.Schema({
         type: String,
         default: ''
     },
-    password: {
+    password:
+    {
         type: String,
         default: ''
     },
-    isDeleted: {
+    isDeleted:
+    {
         type: Boolean,
         default: false
     },
-    signUpDate: {
+    signUpDate:
+    {
         type: Date,
         default: Date.now()
     }

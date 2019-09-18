@@ -3,6 +3,11 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
 
+import {
+    setInStorage,
+    getFromStorage,
+  } from '../../utils/storage';
+
 class Home extends Component 
 {
     constructor(props) 
@@ -26,15 +31,36 @@ class Home extends Component
         this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
         this.onTextboxChangeSignUpPassword = this.onTextboxChangeSignUpPassword.bind(this);
     
+        this.onSignIn = this.onSignIn.bind(this);
         this.onSignUp = this.onSignUp.bind(this);
+        this.logout = this.logout.bind(this);
     }
 
-    componentDidMount() 
-    {
-        this.setState({
-            isLoading: false
-        });
-    }
+    componentDidMount() {
+        const obj = getFromStorage('gandhi');
+        if (obj && obj.token) {
+          const { token } = obj;
+          // Verify token
+          fetch('/api/account/verify?token=' + token)
+            .then(res => res.json())
+            .then(json => {
+              if (json.success) {
+                this.setState({
+                  token,
+                  isLoading: false
+                });
+              } else {
+                this.setState({
+                  isLoading: false,
+                });
+              }
+            });
+        } else {
+          this.setState({
+            isLoading: false,
+          });
+        }
+      }
 
     onTextboxChangeSignInEmail(event) 
     {
@@ -63,6 +89,75 @@ class Home extends Component
             signUpPassword: event.target.value,
         });
     }
+
+    logout() {
+        this.setState({
+          isLoading: true,
+        });
+        const obj = getFromStorage('gandhi');
+        if (obj && obj.token) {
+          const { token } = obj;
+          // Verify token
+          fetch('/api/account/logout?token=' + token)
+            .then(res => res.json())
+            .then(json => {
+              if (json.success) {
+                this.setState({
+                  token: '',
+                  isLoading: false
+                });
+              } else {
+                this.setState({
+                  isLoading: false,
+                });
+              }
+            });
+        } else {
+          this.setState({
+            isLoading: false,
+          });
+        }
+      }
+
+    onSignIn() {
+        // Grab state
+        const {
+          signInEmail,
+          signInPassword,
+        } = this.state;
+        this.setState({
+          isLoading: true,
+        });
+        // Post request to backend
+        fetch('/api/account/signin', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: signInEmail,
+            password: signInPassword,
+          }),
+        }).then(res => res.json())
+          .then(json => {
+            console.log('json', json);
+            if (json.success) {
+              setInStorage('gandhi', { token: json.token });
+              this.setState({
+                signInError: json.message,
+                isLoading: false,
+                signInPassword: '',
+                signInEmail: '',
+                token: json.token,
+              });
+            } else {
+              this.setState({
+                signInError: json.message,
+                isLoading: false,
+              });
+            }
+          });
+      }
 
     onSignUp()
     {
@@ -147,7 +242,7 @@ class Home extends Component
                             onChange={ this.onTextboxChangeSignInPassword }
                         />
                         <br />
-                        <button>Sign In</button>
+                        <button onClick={this.onSignIn}>Sign In</button>
                     </div>
                     <br />
                     <br />
@@ -177,7 +272,8 @@ class Home extends Component
         }
         return (
             <div>
-                <p>Signed in</p>
+                <p>Account</p>
+                <button onClick={this.logout}>Logout</button>
             </div>
         );
     }

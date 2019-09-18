@@ -25,6 +25,8 @@ class Home extends Component
         this.onTextboxChangeSignInPassword = this.onTextboxChangeSignInPassword.bind(this);
         this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
         this.onTextboxChangeSignUpPassword = this.onTextboxChangeSignUpPassword.bind(this);
+    
+        this.onSignUp = this.onSignUp.bind(this);
     }
 
     componentDidMount() 

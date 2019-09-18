@@ -24,6 +24,7 @@
     "autoprefixer": "^8.2.0",
     "axios": "^0.19.0",
     "babel-loader": "^8.0.0-beta.2",
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.17.x",
     "cfenv": "^1.2.2",
     "connect-history-api-fallback": "^1.5.0",

@@ -231,8 +231,6 @@ class Home extends Component
             isLoading,
             token,
             signInError,
-            signInEmail,
-            signInPassword,
             signUpEmail,
             signUpPassword,
             signUpError,

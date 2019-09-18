@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => (
   <footer>
     <hr />
-    <p>Gandhi © 2019</p>
+    <p>Gandhi © 2019 by <a href="mailto:frickreich@gmail.com">F. Rick Reich</a></p>
   </footer>
 );
 

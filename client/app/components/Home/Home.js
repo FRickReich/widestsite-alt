@@ -20,8 +20,6 @@ class Home extends Component
             token: '',
             signUpError: '',
             signInError: '',
-            signInEmail: '',
-            signInPassword: '',
             signUpEmail: '',
             signUpPassword: '',
         };
@@ -284,7 +282,6 @@ class Home extends Component
                         <button onClick={ this.onSignUp }>Sign Up</button>
                         <button onClick={ this.onSignIn }>Sign In</button>
                     </div>
-                </div>
             );
         }
         return (

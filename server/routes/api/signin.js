@@ -237,7 +237,10 @@ module.exports = (app) =>
 
             return res.send({
                 success: true,
-                data: { email: user.email }
+                data: {
+                    email: user.email,
+                    signUpDate: user.signUpDate
+                }
             });
         });
     });

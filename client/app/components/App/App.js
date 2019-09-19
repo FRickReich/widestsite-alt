@@ -7,13 +7,15 @@ import Footer from '../Footer/Footer';
 
 const App = ({ children }) => (
     <>
-        <Header className="header" />
-
-        <main className="content" >
-            { children }
+        <main className="page">
+            <Header className="header"/>
+            
+            <section className="content">
+                { children }
+            </section>
         </main>
 
-        <Footer className="footer" />
+        <Footer className="footer"/>
     </>
 );
 

@@ -13,40 +13,15 @@ class Header extends Component
     constructor(props)
     {
         super(props);
-
-        this.state =
-        {
-            token: ''
-        };
     }
 
     componentDidMount()
     {
-        const obj = getFromStorage('gandhi');
-
-        if (obj && obj.token) 
-        {
-            const { token } = obj;
-            
-            // Verify token
-            fetch('/api/account/verify?token=' + token)
-            .then(res => res.json())
-            .then(json => 
-            {
-                if (json.success) 
-                {   
-                    this.setState({
-                        token
-                    });
-                }
-            });
-        }
+        
     }
 
     render()
     {
-        const { token } = this.state;
-
         return (
             <header>
                 <Link to="/">Home</Link>
@@ -56,13 +31,6 @@ class Header extends Component
                 </nav>
         
                 <Link to="/asdf">404 Page</Link>
-
-                {
-                    token ?
-                    <p>User logged in</p>
-                    :
-                    <p>User not logged in</p>
-                }
 
                 <hr />
             </header>

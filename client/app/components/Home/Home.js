@@ -32,7 +32,6 @@ class Home extends Component
     
         this.onSignIn = this.onSignIn.bind(this);
         this.onSignUp = this.onSignUp.bind(this);
-        this.logout = this.logout.bind(this);
     }
 
     componentDidMount()
@@ -86,49 +85,6 @@ class Home extends Component
         this.setState({
             signUpPassword: event.target.value,
         });
-    }
-
-    logout() 
-    {
-        this.setState({
-            isLoading: true,
-        });
-
-        const obj = getFromStorage('gandhi');
-
-        if (obj && obj.token) 
-        {
-            const { token } = obj;
-          
-            // Verify token
-            fetch('/api/account/logout?token=' + token)
-            .then(res => res.json())
-            .then(json => 
-            {
-                if (json.success) 
-                {
-                    localStorage.removeItem('gandhi');
-
-                    this.setState({
-                        token: '',
-                        userData: [  ],
-                        isLoading: false
-                    });
-                }
-                else
-                {
-                    this.setState({
-                        isLoading: false,
-                    });
-                }
-            });
-        }
-        else
-        {
-            this.setState({
-                isLoading: false,
-            });
-        }
     }
 
     getUserInfo()
@@ -339,8 +295,6 @@ class Home extends Component
                 <p>created: { userData.signUpDate }</p>
 
                 <br />
-
-                <button onClick={this.logout}>Logout</button>
             </div>
         );
     }

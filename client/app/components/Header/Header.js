@@ -16,8 +16,11 @@ class Header extends Component
 
         this.state =
         {
-            token: ''
+            token: '',
+            isLoading: true
         };
+        
+        this.logout = this.logout.bind(this);
     }
 
     componentDidMount()
@@ -43,9 +46,56 @@ class Header extends Component
         }
     }
 
+    logout() 
+    {
+        this.setState({
+            isLoading: true,
+        });
+
+        const obj = getFromStorage('gandhi');
+
+        if (obj && obj.token) 
+        {
+            const { token } = obj;
+          
+            // Verify token
+            fetch('/api/account/logout?token=' + token)
+            .then(res => res.json())
+            .then(json => 
+            {
+                if (json.success) 
+                {
+                    localStorage.removeItem('gandhi');
+
+                    this.setState({
+                        token: '',
+                        isLoading: false
+                    });
+                }
+                else
+                {
+                    this.setState({
+                        isLoading: false,
+                    });
+                }
+            });
+        }
+        else
+        {
+            this.setState({
+                isLoading: false,
+            });
+        }
+    }
+
     render()
     {
-        const { token } = this.state;
+        const { token, isLoading } = this.state;
+
+        if (isLoading)
+        {
+            return (<div><p>Loading...</p></div>);
+        }
 
         return (
             <header>
@@ -59,7 +109,7 @@ class Header extends Component
 
                 {
                     token ?
-                    <p>User logged in</p>
+                    <button onClick={ this.logout }>Logout</button>
                     :
                     <p>User not logged in</p>
                 }

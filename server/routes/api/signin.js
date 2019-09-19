@@ -237,7 +237,7 @@ module.exports = (app) =>
 
             return res.send({
                 success: true,
-                message: { email: user.email }
+                data: { email: user.email }
             });
         });
     });

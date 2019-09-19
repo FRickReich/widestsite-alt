@@ -22,7 +22,7 @@ class Home extends Component
             signInError: '',
             signUpEmail: '',
             signUpPassword: '',
-            userInfo: [],
+            userData: [  ],
         };
 
         this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
@@ -109,6 +109,7 @@ class Home extends Component
 
                     this.setState({
                         token: '',
+                        userData: [  ],
                         isLoading: false
                     });
                 }
@@ -146,13 +147,8 @@ class Home extends Component
                 if (json.success) 
                 {
                     this.setState({
-                        isLoading: false
-                    });
-                }
-                else
-                {
-                    this.setState({
                         isLoading: false,
+                        userData: json.data
                     });
                 }
             });
@@ -195,7 +191,7 @@ class Home extends Component
         
             if (json.success)
             {
-                setInStorage('gandhi', { token: json.token, user: signUpEmail });
+                setInStorage('gandhi', { token: json.token });
                 
                 this.getUserInfo();
 
@@ -331,7 +327,7 @@ class Home extends Component
             <div>
                 <p>Account</p>
 
-                { userInfo }
+                { userData.email }
                 <button onClick={this.logout}>Logout</button>
             </div>
         );

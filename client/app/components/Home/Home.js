@@ -327,7 +327,11 @@ class Home extends Component
             <div>
                 <p>Account</p>
 
-                { userData.email }
+                <p>email: { userData.email }</p>
+                <p>created: { userData.signUpDate }</p>
+
+                <br />
+
                 <button onClick={this.logout}>Logout</button>
             </div>
         );

@@ -154,7 +154,7 @@ class Home extends Component
         
             if (json.success)
             {
-                setInStorage('gandhi', { token: json.token });
+                setInStorage('gandhi', { token: json.token, user: signUpEmail });
                 
                 this.setState({
                     signInError: json.message,
@@ -258,7 +258,7 @@ class Home extends Component
                             :
                             (null)
                         }
-                        <p>Sign Up</p>
+                        <p>Sign Up/Sign In</p>
 
                         <input
                             type="email"

@@ -48,6 +48,9 @@ class Home extends Component
             {
                 if (json.success) 
                 {
+
+                    this.getUserInfo();
+                    
                     this.setState({
                         token,
                         isLoading: false
@@ -127,9 +130,39 @@ class Home extends Component
 
     getUserInfo()
     {
-        this.setState({
-            userInfo: { user: "x" }
-        })
+        const obj = getFromStorage('gandhi');
+
+        if (obj && obj.token) 
+        {
+            const { token } = obj;
+            
+            // Verify token
+            fetch('/api/account/?id=' + token)
+            .then(res => res.json())
+            .then(json => 
+            {
+                console.log(json);
+
+                if (json.success) 
+                {
+                    this.setState({
+                        isLoading: false
+                    });
+                }
+                else
+                {
+                    this.setState({
+                        isLoading: false,
+                    });
+                }
+            });
+        }
+        else 
+        {
+            this.setState({
+                isLoading: false,
+            });
+        }
     }
 
     onSignIn() 
@@ -164,6 +197,8 @@ class Home extends Component
             {
                 setInStorage('gandhi', { token: json.token, user: signUpEmail });
                 
+                this.getUserInfo();
+
                 this.setState({
                     signInError: json.message,
                     isLoading: false,
@@ -296,7 +331,7 @@ class Home extends Component
             <div>
                 <p>Account</p>
 
-                ${ userInfo }
+                { userInfo }
                 <button onClick={this.logout}>Logout</button>
             </div>
         );

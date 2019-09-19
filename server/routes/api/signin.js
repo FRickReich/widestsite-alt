@@ -218,11 +218,13 @@ module.exports = (app) =>
 
     app.get('/api/account/', (req, res, next) =>
     {
+        const { body } = req;
+        const { id } = body;
+
         User.find({
-            email: email
+            id: id
         }, (err, users) =>
         {
-            
             if (err) 
             {
                 console.log(err);
@@ -230,15 +232,13 @@ module.exports = (app) =>
                   success: false,
                 });
             }
-            else
-            {
-                const user = users[0];
+            
+            const user = users[0];
 
-                return res.send({
-                    success: true,
-                    message: { id: user._id }
-                });
-            }
+            return res.send({
+                success: true,
+                message: { email: user.email }
+            });
         });
     });
 };

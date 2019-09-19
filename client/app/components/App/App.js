@@ -7,13 +7,13 @@ import Footer from '../Footer/Footer';
 
 const App = ({ children }) => (
     <>
-        <Header />
+        <Header className="header" />
 
-        <main>
+        <main className="content" >
             { children }
         </main>
 
-        <Footer />
+        <Footer className="footer" />
     </>
 );
 

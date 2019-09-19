@@ -1,3 +1,13 @@
 @charset "UTF-8";
 
 @import 'vendor/normalize';
+
+.content
+{
+    min-height: calc(100vh - 40px);
+}
+
+.footer
+{
+    height: 40px;
+}

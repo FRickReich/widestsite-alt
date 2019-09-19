@@ -3,6 +3,8 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
 
+import Header from '../Header/Header';
+
 import {
     setInStorage,
     getFromStorage,
@@ -281,46 +283,50 @@ class Home extends Component
         if (!token)
         {
             return (
-                    <div>
-                        {
-                            (signInError) ?
-                            (
-                                <p>{ signInError }</p>
-                            )
-                            :
-                            (null)
-                        }
-                        {
-                            (signUpError) ?
-                            (
-                                <p>{ signUpError }</p>
-                            )
-                            :
-                            (null)
-                        }
-                        <p>Sign Up/Sign In</p>
+                <div className="content">
+                    <Header className="header" />
+                    
+                    {
+                        (signInError) ?
+                        (
+                            <p>{ signInError }</p>
+                        )
+                        :
+                        (null)
+                    }
+                    {
+                        (signUpError) ?
+                        (
+                            <p>{ signUpError }</p>
+                        )
+                        :
+                        (null)
+                    }
+                    
+                    <p>Sign Up/Sign In</p>
 
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            value={ signUpEmail }
-                            onChange={ this.onTextboxChangeSignUpEmail }
-                        />
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={ signUpEmail }
+                        onChange={ this.onTextboxChangeSignUpEmail }
+                    />
                         
-                        <br />
+                    <br />
                         
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            value={ signUpPassword }
-                            onChange={ this.onTextboxChangeSignUpPassword }
-                        />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={ signUpPassword }
+                        onChange={ this.onTextboxChangeSignUpPassword }
+                    />
                         
-                        <br />
+                    <br />
                         
-                        <button onClick={ this.onSignUp }>Sign Up</button>
-                        <button onClick={ this.onSignIn }>Sign In</button>
-                    </div>
+                    <button onClick={ this.onSignUp }>Sign Up</button>
+                    <button onClick={ this.onSignIn }>Sign In</button>
+                    
+                </div>
             );
         }
         return (

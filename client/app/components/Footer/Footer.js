@@ -1,12 +1,28 @@
 'use strict';
 
-import React from 'react';
+import React, { Component } from 'react';
 
-const Footer = () => (
-    <footer>
-        <hr />
-        <p>Gandhi © 2019 by <a href="mailto:frickreich@gmail.com">F. Rick Reich</a></p>
-    </footer>
-);
+class Footer extends Component 
+{
+    constructor(props)
+    {
+        super(props);
+    }
+
+    componentDidMount()
+    {
+        
+    }
+
+    render()
+    {
+        return (
+            <footer>
+                <hr />
+                <p>Gandhi © 2019 by <a href="mailto:frickreich@gmail.com">F. Rick Reich</a></p>
+            </footer>
+        )
+    }
+}
 
 export default Footer;

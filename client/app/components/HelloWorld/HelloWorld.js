@@ -1,9 +1,25 @@
 'use strict';
 
-import React from 'react';
+import React, { Component } from 'react';
 
-const HelloWorld = () => (
-    <p>Hello World</p>
-);
+class HelloWorld extends Component 
+{
+    constructor(props)
+    {
+        super(props);
+    }
+
+    componentDidMount()
+    {
+        
+    }
+
+    render()
+    {
+        return (
+            <p>Hello World</p>
+        )
+    }
+}
 
 export default HelloWorld;

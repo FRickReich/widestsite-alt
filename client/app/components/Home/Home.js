@@ -270,7 +270,7 @@ class Home extends Component
             signUpEmail,
             signUpPassword,
             signUpError,
-            userInfo
+            userData
         } = this.state;
 
         if (isLoading)

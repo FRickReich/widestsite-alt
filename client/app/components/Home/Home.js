@@ -22,6 +22,7 @@ class Home extends Component
             signInError: '',
             signUpEmail: '',
             signUpPassword: '',
+            userInfo: [],
         };
 
         this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
@@ -122,6 +123,13 @@ class Home extends Component
                 isLoading: false,
             });
         }
+    }
+
+    getUserInfo()
+    {
+        this.setState({
+            userInfo: { user: "x" }
+        })
     }
 
     onSignIn() 
@@ -231,6 +239,7 @@ class Home extends Component
             signUpEmail,
             signUpPassword,
             signUpError,
+            userInfo
         } = this.state;
 
         if (isLoading)
@@ -286,6 +295,8 @@ class Home extends Component
         return (
             <div>
                 <p>Account</p>
+
+                ${ userInfo }
                 <button onClick={this.logout}>Logout</button>
             </div>
         );

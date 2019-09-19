@@ -215,4 +215,30 @@ module.exports = (app) =>
             });
         });
     });
+
+    app.get('/api/account/', (req, res, next) =>
+    {
+        User.find({
+            email: email
+        }, (err, users) =>
+        {
+            
+            if (err) 
+            {
+                console.log(err);
+                return res.send({
+                  success: false,
+                });
+            }
+            else
+            {
+                const user = users[0];
+
+                return res.send({
+                    success: true,
+                    message: { id: user._id }
+                });
+            }
+        });
+    });
 };

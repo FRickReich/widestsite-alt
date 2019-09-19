@@ -17,7 +17,11 @@ class HelloWorld extends Component
     render()
     {
         return (
-            <p>Hello World</p>
+            <div className="content">
+                <Header className="header" />
+                
+                <p>Hello World</p>
+            </div>
         )
     }
 }

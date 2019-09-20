@@ -1,6 +1,6 @@
 'use strict';
 import React, { Component } from 'react';
-
+import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom';
 import 'whatwg-fetch';
 
@@ -53,14 +53,14 @@ class Header extends Component
 
         const obj = getFromStorage('gandhi');
 
-        if (obj && obj.token) 
+        if (obj && obj.token)
         {
             const { token } = obj;
           
             // Verify token
             fetch('/api/account/logout?token=' + token)
             .then(res => res.json())
-            .then(json => 
+            .then(json =>
             {
                 if (json.success) 
                 {
@@ -68,9 +68,10 @@ class Header extends Component
 
                     this.setState({
                         token: ''
+                    }, () =>
+                    {
+                        return <Redirect to={"/"}/>
                     });
-
-                    this.props.history.push('/');
                 }
             });
         }

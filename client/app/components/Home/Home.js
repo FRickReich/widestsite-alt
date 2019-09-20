@@ -414,6 +414,9 @@ class Home extends Component
 
                     <br />
 
+                    <p>Counters:</p>
+                    
+                    <ul>
                     {
                         this.state.counters.map((counter, i) => (
                             <li key={i}>
@@ -421,7 +424,7 @@ class Home extends Component
                             </li>
                         ))
                     }
-                    
+                    </ul>
                 </div>
             );
         }

@@ -145,9 +145,6 @@ class Home extends Component
 
                     this.setState({
                         token: ''
-                    }, () =>
-                    {
-                        return <Redirect to={"/"}/>
                     });
                 }
             });

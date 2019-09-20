@@ -16,8 +16,7 @@ class Header extends Component
 
         this.state =
         {
-            token: '',
-            isLoading: true
+            token: ''
         };
         
         this.logout = this.logout.bind(this);
@@ -68,34 +67,16 @@ class Header extends Component
                     localStorage.removeItem('gandhi');
 
                     this.setState({
-                        token: '',
-                        isLoading: false
+                        token: ''
                     });
                 }
-                else
-                {
-                    this.setState({
-                        isLoading: false,
-                    });
-                }
-            });
-        }
-        else
-        {
-            this.setState({
-                isLoading: false,
             });
         }
     }
 
     render()
     {
-        const { token, isLoading } = this.state;
-
-        if (isLoading)
-        {
-            return (<div><p>Loading...</p></div>);
-        }
+        const { token } = this.state;
 
         return (
             <header>

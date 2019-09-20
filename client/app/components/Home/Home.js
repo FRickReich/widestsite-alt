@@ -147,23 +147,36 @@ class Home extends Component
 
         const obj = getFromStorage('gandhi');
 
-        if (obj && obj.token)
+        if (obj && obj.token) 
         {
             const { token } = obj;
           
             // Verify token
             fetch('/api/account/logout?token=' + token)
             .then(res => res.json())
-            .then(json =>
+            .then(json => 
             {
-                if (json.success)
+                if (json.success) 
                 {
                     localStorage.removeItem('gandhi');
 
                     this.setState({
-                        token: ''
+                        token: '',
+                        isLoading: false
                     });
                 }
+                else
+                {
+                    this.setState({
+                        isLoading: false,
+                    });
+                }
+            });
+        }
+        else
+        {
+            this.setState({
+                isLoading: false,
             });
         }
     }

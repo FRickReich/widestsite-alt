@@ -69,6 +69,8 @@ class Header extends Component
                     this.setState({
                         token: ''
                     });
+
+                    this.props.history.push('/');
                 }
             });
         }

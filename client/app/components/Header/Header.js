@@ -1,86 +1,23 @@
 'use strict';
 import React, { Component } from 'react';
-import { Redirect } from 'react-router'
-import { Link } from 'react-router-dom';
-import 'whatwg-fetch';
 
-import {
-    getFromStorage
-} from '../../utils/storage';
+import { Link } from 'react-router-dom';
 
 class Header extends Component 
 {
     constructor(props)
     {
         super(props);
-
-        this.state =
-        {
-            token: ''
-        };
-        
-        this.logout = this.logout.bind(this);
     }
 
     componentDidMount()
     {
-        const obj = getFromStorage('gandhi');
-
-        if (obj && obj.token) 
-        {
-            const { token } = obj;
-            
-            // Verify token
-            fetch('/api/account/verify?token=' + token)
-            .then(res => res.json())
-            .then(json => 
-            {
-                if (json.success) 
-                {   
-                    this.setState({
-                        token
-                    });
-                }
-            });
-        }
+        
     }
 
-    logout() 
-    {
-        this.setState({
-            isLoading: true,
-        });
-
-        const obj = getFromStorage('gandhi');
-
-        if (obj && obj.token)
-        {
-            const { token } = obj;
-          
-            // Verify token
-            fetch('/api/account/logout?token=' + token)
-            .then(res => res.json())
-            .then(json =>
-            {
-                if (json.success) 
-                {
-                    localStorage.removeItem('gandhi');
-
-                    this.setState({
-                        token: ''
-                    }, () =>
-                    {
-                        return <Redirect to={"/"}/>
-                    });
-                }
-            });
-        }
-    }
-
+    
     render()
     {
-        const { token } = this.state;
-
         return (
             <header>
                 <Link to="/">Home</Link>
@@ -90,13 +27,6 @@ class Header extends Component
                 </nav>
         
                 <Link to="/asdf">404 Page</Link>
-
-                {
-                    token ?
-                    <button onClick={ this.logout }>Logout</button>
-                    :
-                    <p>User not logged in</p>
-                }
 
                 <hr />
             </header>

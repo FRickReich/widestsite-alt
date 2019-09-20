@@ -32,6 +32,8 @@ class Home extends Component
     
         this.onSignIn = this.onSignIn.bind(this);
         this.onSignUp = this.onSignUp.bind(this);
+        
+        this.logout = this.logout.bind(this);
     }
 
     componentDidMount()
@@ -119,6 +121,39 @@ class Home extends Component
             });
         }
     }
+    
+    logout() 
+    {
+        this.setState({
+            isLoading: true,
+        });
+
+        const obj = getFromStorage('gandhi');
+
+        if (obj && obj.token)
+        {
+            const { token } = obj;
+          
+            // Verify token
+            fetch('/api/account/logout?token=' + token)
+            .then(res => res.json())
+            .then(json =>
+            {
+                if (json.success) 
+                {
+                    localStorage.removeItem('gandhi');
+
+                    this.setState({
+                        token: ''
+                    }, () =>
+                    {
+                        return <Redirect to={"/"}/>
+                    });
+                }
+            });
+        }
+    }
+
 
     onSignIn() 
     {
@@ -295,6 +330,7 @@ class Home extends Component
                 <p>email: { userData.email }</p>
                 <p>created: { userData.signUpDate }</p>
 
+                <button onClick={ this.logout }>Logout</button>
                 <br />
             </div>
         );

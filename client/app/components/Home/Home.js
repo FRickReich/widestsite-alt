@@ -318,7 +318,9 @@ class Home extends Component
             );
         }
         return (
-            <div>
+            <div className="content">
+                <Header className="header" />
+                
                 <p>Account</p>
 
                 <p>email: { userData.email }</p>

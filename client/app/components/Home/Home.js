@@ -139,7 +139,7 @@ class Home extends Component
             .then(res => res.json())
             .then(json =>
             {
-                if (json.success) 
+                if (json.success)
                 {
                     localStorage.removeItem('gandhi');
 
@@ -150,7 +150,6 @@ class Home extends Component
             });
         }
     }
-
 
     onSignIn() 
     {

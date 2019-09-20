@@ -61,6 +61,7 @@ class Home extends Component
                 {
                     this.setState({
                         isLoading: false,
+                        userData: [  ]
                     });
                 }
             });

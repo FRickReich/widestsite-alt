@@ -2,8 +2,6 @@
 
 import React, { Component } from 'react';
 
-import Header from '../Header/Header';
-
 class HelloWorld extends Component 
 {
     constructor(props)
@@ -19,9 +17,7 @@ class HelloWorld extends Component
     render()
     {
         return (
-            <div className="content">
-                <Header className="header" />
-                
+            <div>
                 <p>Hello World</p>
             </div>
         )

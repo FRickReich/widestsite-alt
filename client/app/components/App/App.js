@@ -3,14 +3,19 @@
 import React, { Component } from 'react';
 
 import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
 
 const App = ({ children }) => (
     <>
         <main className="page">
+            <div className="content">
+                <Header />
+            
                 { children }
-        </main>
+            </div>
 
-        <Footer className="footer"/>
+            <Footer className="footer"/>
+        </main>
     </>
 );
 

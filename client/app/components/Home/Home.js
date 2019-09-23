@@ -70,7 +70,7 @@ class Home extends Component
                             <tr key={ i }>
                                 <td>{ repo.id }</td>
                                 <td>{ repo.name }</td>
-                                <td><a href="http://github.com/{ repo.full_name }">{ repo.full_name }</a></td>
+                                <td><a href={ `http://github.com/${ repo.full_name }` } >{ repo.full_name }</a></td>
                             </tr>
                         ))
                     }              

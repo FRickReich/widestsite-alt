@@ -12,9 +12,9 @@ const App = ({ children }) => (
                 <Header />
             
                 { children }
-
-                <Footer className="footer"/>
             </div>
+
+            <Footer className="footer"/>
         </main>
     </>
 );

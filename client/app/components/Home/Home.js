@@ -68,15 +68,15 @@ class Home extends Component
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            repos.map((repo, i) => (
-                                <tr key={ i }>
-                                    <td>{ repo.id }</td>
-                                    <td>{ repo.name }</td>
-                                    <td><a href={ `http://github.com/${ repo.full_name }` } >{ repo.full_name }</a></td>
-                                </tr>
-                            ))
-                        }
+                    {
+                        repos.map((repo, i) => (
+                            <tr key={ i }>
+                                <td>{ repo.id }</td>
+                                <td>{ repo.name }</td>
+                                <td><a href={ `http://github.com/${ repo.full_name }` } >{ repo.full_name }</a></td>
+                            </tr>
+                        ))
+                    }
                     </tbody>
                 </table>
             )

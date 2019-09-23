@@ -23,7 +23,9 @@ class Home extends Component
 
     fetchData()
     {
-        this.setState({ loadingRepo: true })
+        this.setState({
+            loadingRepo: true
+        })
 
         fetch(`https://api.github.com/users/frickreich/repos`)
         .then(response => response.json())

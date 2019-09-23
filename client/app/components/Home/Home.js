@@ -52,7 +52,7 @@ class Home extends Component
 
         if (loadingRepo)
         {
-            return <p>loading...</p>
+            return <p>Loading...</p>
         }
         else
         {

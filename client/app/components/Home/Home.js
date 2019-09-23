@@ -57,19 +57,22 @@ class Home extends Component
         else
         {
             return (
-                <ul>
+                <table>
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>target</th>
+                    </tr>
                     {
                         repos.map((repo, i) => (
-                            <li key={ i }>
-                                <span>id: { repo.id } </span>
-                                <br />
-                                <span>name: { repo.name }</span>
-                                <br />
-                                <span>target: { repo.full_name }</span>
-                            </li>
+                            <tr key={ i }>
+                                <td>{ repo.id }</td>
+                                <td>{ repo.name }</td>
+                                <td>{ repo.full_name }</td>
+                            </tr>
                         ))
-                    }
-                </ul>
+                    }              
+                </table>
             )
         }
     }

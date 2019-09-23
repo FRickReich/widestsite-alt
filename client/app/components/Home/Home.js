@@ -31,7 +31,6 @@ class Home extends Component
         {
             if (Array.isArray(data)) 
             {
-                console.log(JSON.stringify(data));
                 this.setState({
                     repos: data,
                     loadingRepo: false
@@ -51,13 +50,29 @@ class Home extends Component
     {
         const { loadingRepo, repos } = this.state;
 
-        if (repos)
+        if (!repos)
         {
-            console.log(repos);
+            return <p>loading...</p>
+        }
+        else
+        {
+            
         }
 
         return (
-            <div>test</div>
+            <ul>
+            {
+                repos.map((repo, i) => (
+                    <li key={i}>
+                        <span>{ repo.id } </span>
+                        <br />
+                        <span>{ repo.name }</span>
+                        <br />
+                        <span>{ repo.full_name }</span>
+                    </li>
+                ))
+            }    
+            </ul>
         )
     }
 }

@@ -27,9 +27,9 @@ class Home extends Component
 
         fetch(`https://api.github.com/users/hiteshsahu/repos`)
         .then(response => response.json())
-        .then(data => 
+        .then(data =>
         {
-            if (Array.isArray(data)) 
+            if (Array.isArray(data))
             {
                 this.setState({
                     repos: data,
@@ -40,7 +40,7 @@ class Home extends Component
             {
                 this.setState({
                     repos: [],
-                    loadingRepo: false  
+                    loadingRepo: false
                 });
             }
         });
@@ -50,30 +50,28 @@ class Home extends Component
     {
         const { loadingRepo, repos } = this.state;
 
-        if (!repos)
+        if (loadingRepo)
         {
             return <p>loading...</p>
         }
         else
         {
-            
+            return (
+                <ul>
+                    {
+                        repos.map((repo, i) => (
+                            <li key={ i }>
+                                <span>id: { repo.id } </span>
+                                <br />
+                                <span>name: { repo.name }</span>
+                                <br />
+                                <span>target: { repo.full_name }</span>
+                            </li>
+                        ))
+                    }
+                </ul>
+            )
         }
-
-        return (
-            <ul>
-            {
-                repos.map((repo, i) => (
-                    <li key={i}>
-                        <span>{ repo.id } </span>
-                        <br />
-                        <span>{ repo.name }</span>
-                        <br />
-                        <span>{ repo.full_name }</span>
-                    </li>
-                ))
-            }    
-            </ul>
-        )
     }
 }
 

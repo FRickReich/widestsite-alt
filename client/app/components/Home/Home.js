@@ -25,7 +25,7 @@ class Home extends Component
     {
         this.setState({ loadingRepo: true })
 
-        fetch(`https://api.github.com/users/hiteshsahu/repos`)
+        fetch(`https://api.github.com/users/frickreich/repos`)
         .then(response => response.json())
         .then(data =>
         {
@@ -68,7 +68,7 @@ class Home extends Component
                             <tr key={ i }>
                                 <td>{ repo.id }</td>
                                 <td>{ repo.name }</td>
-                                <td>{ repo.full_name }</td>
+                                <td><a href="http://github.com/{ repo.full_name }">{ repo.full_name }</a></td>
                             </tr>
                         ))
                     }              

@@ -13,7 +13,7 @@ import App from './components/App/App';
 
 import NotFound from './components/App/NotFound';
 import Home from './components/Home/Home';
-import HelloWorld from './components/HelloWorld/HelloWorld';
+import Counter from './components/Counter/Counter';
 import Repos from './components/Repos/Repos';
 import Dashboard from './components/Dashboard/Dashboard';
 
@@ -24,7 +24,7 @@ render((
         <App>
             <Switch>
                 <Route exact path="/" component={Home}/>
-                <Route path="/helloworld" component={ HelloWorld } />
+                <Route path="/counter" component={ Counter } />
                 <Route path="/repos" component={ Repos } />
                 <Route path="/dashboard" component={ Dashboard } />
                 <Route component={NotFound}/>

@@ -26,7 +26,7 @@ class Header extends Component
                             <NavLink exact to="/" activeClassName="active">Home</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/helloworld" activeClassName="active">Hello World</NavLink>
+                            <NavLink to="/counter" activeClassName="active">Counter</NavLink>
                         </li>
                         <li>
                             <NavLink to="/repos" activeClassName="active">Repos</NavLink>

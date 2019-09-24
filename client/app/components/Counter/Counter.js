@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 
-class HelloWorld extends Component 
+class Counter extends Component 
 {
     constructor(props)
     {
@@ -18,12 +18,12 @@ class HelloWorld extends Component
     {
         return (
             <div>
-                <h1>Hello World</h1>
+                <h1>Counter</h1>
 
-                <p>this is a hello world template page...</p>
+                <p>this is a database interaction template page...</p>
             </div>
         )
     }
 }
 
-export default HelloWorld;
+export default Counter;

@@ -2,12 +2,33 @@
 
 @import 'vendor/normalize';
 
-.content
+#topMenu ul
 {
-    min-height: calc(100vh - 60px);
+    list-style-type: none;
+    overflow: hidden;
+    background: #333333;
 }
 
-.footer
+#topMenu ul li
 {
-    height: 60px;
+    float: left;
+}
+
+#topMenu ul li a
+{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#topMenu ul li a:hover
+{
+    background: #111111;
+}
+
+#topMenu ul li a.active
+{
+    background: #4CAF50;
 }

@@ -20,7 +20,7 @@ class Header extends Component
     {
         return (
             <header>
-                <nav>
+                <nav id="topMenu">
                     <ul>
                         <li>
                             <Link to="/">Home</Link>

@@ -1,7 +1,7 @@
 'use strict';
 import React, { Component } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 class Header extends Component 
 {
@@ -18,24 +18,27 @@ class Header extends Component
     
     render()
     {
+        var isActive = this.context.router.route.location.pathname === this.props.to;
+        var className = isActive ? 'active' : '';
+
         return (
             <header>
                 <nav id="topMenu">
                     <ul>
                         <li>
-                            <Link to="/">Home</Link>
+                            <NavLink to="/" activeClassName="active">Home</NavLink>
                         </li>
                         <li>
-                            <Link to="/helloworld">Hello World</Link>
+                            <NavLink to="/helloworld" activeClassName="active">Hello World</NavLink>
                         </li>
                         <li>
-                            <Link to="/repos">Repos</Link>
+                            <NavLink to="/repos" activeClassName="active">Repos</NavLink>
                         </li>
                         <li>
-                            <Link to="/dashboard">Dashboard</Link>
+                            <NavLink to="/dashboard" activeClassName="active">Dashboard</NavLink>
                         </li>
                         <li>
-                            <Link to="/asdf">404 Page</Link>
+                            <NavLink to="/asdf" activeClassName="active">404 Page</NavLink>
                         </li>
                     </ul>
                 </nav>

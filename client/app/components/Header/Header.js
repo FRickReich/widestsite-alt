@@ -18,9 +18,6 @@ class Header extends Component
     
     render()
     {
-        var isActive = this.context.router.route.location.pathname === this.props.to;
-        var className = isActive ? 'active' : '';
-
         return (
             <header>
                 <nav id="topMenu">

@@ -23,7 +23,7 @@ class Header extends Component
                 <nav id="topMenu">
                     <ul>
                         <li>
-                            <NavLink to="/" activeClassName="active">Home</NavLink>
+                            <Link to="/">Home</Link>
                         </li>
                         <li>
                             <NavLink to="/helloworld" activeClassName="active">Hello World</NavLink>
@@ -39,6 +39,7 @@ class Header extends Component
                         </li>
                     </ul>
                 </nav>
+
                 <hr />
             </header>
         )

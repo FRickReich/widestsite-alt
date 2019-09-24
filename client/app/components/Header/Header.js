@@ -24,6 +24,7 @@ class Header extends Component
 
                 <nav>
                     <Link to="/helloworld">Hello World</Link>
+                    <Link to="/repos">Repos</Link>
                 </nav>
         
                 <Link to="/asdf">404 Page</Link>

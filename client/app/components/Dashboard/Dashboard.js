@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
 
-class Home extends Component 
+class Dashboard extends Component 
 {
     constructor(props) 
     {
@@ -14,12 +14,12 @@ class Home extends Component
     {
         return (
             <div>
-                <h1>Home</h1>
+                <h1>Dashboard</h1>
 
-                <p>this is the homepage...</p>
+                <p>this is the dashboard...</p>
             </div>
         )
     }
 }
 
-export default Home;
+export default Dashboard;

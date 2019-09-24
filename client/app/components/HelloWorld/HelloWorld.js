@@ -18,7 +18,9 @@ class HelloWorld extends Component
     {
         return (
             <div>
-                <p>Hello World</p>
+                <h1>Hello World</h1>
+
+                <p>this is a hello world template page...</p>
             </div>
         )
     }

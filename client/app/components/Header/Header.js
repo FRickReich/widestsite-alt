@@ -20,15 +20,25 @@ class Header extends Component
     {
         return (
             <header>
-                <Link to="/">Home</Link>
-
                 <nav>
-                    <Link to="/helloworld">Hello World</Link>
-                    <Link to="/repos">Repos</Link>
+                    <ul>
+                        <li>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/helloworld">Hello World</Link>
+                        </li>
+                        <li>
+                            <Link to="/repos">Repos</Link>
+                        </li>
+                        <li>
+                            <Link to="/dashboard">Dashboard</Link>
+                        </li>
+                        <li>
+                            <Link to="/asdf">404 Page</Link>
+                        </li>
+                    </ul>
                 </nav>
-        
-                <Link to="/asdf">404 Page</Link>
-
                 <hr />
             </header>
         )

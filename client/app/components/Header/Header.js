@@ -23,7 +23,7 @@ class Header extends Component
                 <nav id="topMenu">
                     <ul>
                         <li>
-                            <Link to="/">Home</Link>
+                            <NavLink exact to="/" activeClassName="active">Home</NavLink>
                         </li>
                         <li>
                             <NavLink to="/helloworld" activeClassName="active">Hello World</NavLink>

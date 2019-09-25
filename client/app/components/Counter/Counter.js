@@ -10,6 +10,7 @@ class Counter extends Component
 
         this.state =
         {
+            token: '',
             counters: [  ],
         }
 
@@ -23,6 +24,28 @@ class Counter extends Component
 
     componentDidMount()
     {
+        const obj = getFromStorage('gandhi');
+
+        if (obj && obj.token) 
+        {
+            const { token } = obj;
+            
+            // Verify token
+            fetch('/api/account/verify?token=' + token)
+            .then(res => res.json())
+            .then(json => 
+            {
+                if (json.success) 
+                {
+                    this.getUserInfo();
+                    
+                    this.setState({
+                        token
+                    });
+                }
+            });
+        }
+
         fetch('/api/counters')
         .then(res => res.json())
         .then(json => 
@@ -115,16 +138,24 @@ class Counter extends Component
                 {
                     counters.map((counter, i) => (
                         <li key={i}>
-                            <span>{counter.count} </span>
-                            <button onClick={() => this.incrementCounter(i)}>+</button>
-                            <button onClick={() => this.decrementCounter(i)}>-</button>
-                            <button onClick={() => this.deleteCounter(i)}>x</button>
+                            <span>{ counter.count } </span>
+                            {
+                                token &&
+                                <span>
+                                    <button onClick={() => this.incrementCounter(i)}>+</button>
+                                    <button onClick={() => this.decrementCounter(i)}>-</button>
+                                    <button onClick={ () => this.deleteCounter(i) }>x</button>
+                                </span>
+                            }
                         </li>
                     ))
                 }
                 </ul>
 
-                <button onClick={ this.newCounter }>Add counter</button>
+                {
+                    token &&
+                    <button onClick={ this.newCounter }>Add counter</button>
+                }
             </div>
         )
     }

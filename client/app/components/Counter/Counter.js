@@ -23,7 +23,7 @@ class Counter extends Component
         this.decrementCounter = this.decrementCounter.bind(this);
         this.deleteCounter = this.deleteCounter.bind(this);
     
-        this._modifyCounter = this._modifyCounter.bind(this);
+        this.modifyCounter = this.modifyCounter.bind(this);
     }
 
     componentDidMount()
@@ -77,11 +77,11 @@ class Counter extends Component
     {
         const id = this.state.counters[index]._id;
 
-        fetch(`/api/counters/${id}/increment`, { method: 'PUT' })
+        fetch(`/api/counters/${ id }/increment`, { method: 'PUT' })
         .then(res => res.json())
         .then(json => 
         {
-            this._modifyCounter(index, json);
+            this.modifyCounter(index, json);
         });
     }
 
@@ -89,11 +89,11 @@ class Counter extends Component
     {
         const id = this.state.counters[index]._id;
 
-        fetch(`/api/counters/${id}/decrement`, { method: 'PUT' })
+        fetch(`/api/counters/${ id }/decrement`, { method: 'PUT' })
         .then(res => res.json())
         .then(json =>
         {
-            this._modifyCounter(index, json);
+            this.modifyCounter(index, json);
         });
     }
 
@@ -101,14 +101,14 @@ class Counter extends Component
     {
         const id = this.state.counters[index]._id;
 
-        fetch(`/api/counters/${id}`, { method: 'DELETE' })
+        fetch(`/api/counters/${ id }`, { method: 'DELETE' })
         .then(_ => 
         {
-            this._modifyCounter(index, null);
+            this.modifyCounter(index, null);
         });
     }
 
-    _modifyCounter(index, data) 
+    modifyCounter(index, data) 
     {
         let prevData = this.state.counters;
 
@@ -139,13 +139,13 @@ class Counter extends Component
                 <ul>
                 {
                     counters.map((counter, i) => (
-                        <li key={i}>
+                        <li key={ i }>
                             <span>{ counter.count } </span>
                             {
                                 token ?
                                 <span>
-                                    <button onClick={() => this.incrementCounter(i)}>+</button>
-                                    <button onClick={() => this.decrementCounter(i)}>-</button>
+                                    <button onClick={ () => this.incrementCounter(i) }>+</button>
+                                    <button onClick={ () => this.decrementCounter(i) }>-</button>
                                     <button onClick={ () => this.deleteCounter(i) }>x</button>
                                 </span>
                                 :

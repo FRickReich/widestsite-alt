@@ -11,7 +11,6 @@ const App = ({ children }) => (
             <Header />
             
             <div className="content">
-            
                 { children }
             </div>
 

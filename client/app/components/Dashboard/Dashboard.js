@@ -118,7 +118,7 @@ class Dashboard extends Component
             });
         }
     }
-    
+
     logout() 
     {
         this.setState({

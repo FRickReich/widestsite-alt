@@ -4,25 +4,58 @@
 
 A MERN stack application template for use with Docker and [sloppy.io](http://www.sloppy.io).
 
+Featuring all elements of a web application that would be needed to run a complete MERN environment locally, with docker or on sloppy.io.
+
 ## Start
 
-locally: `npm install` then `npm start`, don't forget that you also have to have a mongodb instance running.
+locally: `npm install` then `npm start` in root project folder, don't forget that you also have to have a mongodb instance running.
 
-docker: `docker-compose up -d`
+docker: `docker-compose up -d` in root project folder.
+
+sloppy.io: `sloppy start` in root project folder.
 
 ## Features
 
 - Dockerfile
 - docker-compose file
+- sloppy.io file
 - .env file
 - Server and Client in one project
 - Webpack configuration
-- sloppy.io support
+- User interaction handling
+- Database handling
+- external data access handling
+
+## Menu
+
+### Home
+
+This is the homepage of the project.
+
+### Counter
+
+*Based on ... by ...*
+
+A Page showing a list of counters, originally always editable, but changed so it can only edit counters if a user is logged in, to proof interaction with the user system.
+
+### Repos
+
+*Based on ... by ...*
+
+A Page showcasing a list of repositories, fetched from the github api (external).
+
+### Dashboard
+
+*Based on ... by ...*
+
+A Page showcasing user registration, user editing, user login and fetching user data.
+
+### 404
+
+A Page showcasing a bad link.
 
 ## Todo
 
-- User Login
-- User Profile
 - User Settings
 - Admin dashboard
 

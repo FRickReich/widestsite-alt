@@ -144,12 +144,14 @@ class Counter extends Component
                         <li key={i}>
                             <span>{ counter.count } </span>
                             {
-                                token &&
+                                token ?
                                 <span>
                                     <button onClick={() => this.incrementCounter(i)}>+</button>
                                     <button onClick={() => this.decrementCounter(i)}>-</button>
                                     <button onClick={ () => this.deleteCounter(i) }>x</button>
                                 </span>
+                                :
+                                <span></span>
                             }
                         </li>
                     ))
@@ -157,8 +159,10 @@ class Counter extends Component
                 </ul>
 
                 {
-                    token &&
+                    token ?
                     <button onClick={ this.newCounter }>Add counter</button>
+                    :
+                    <span></span>
                 }
             </div>
         )

@@ -2,7 +2,7 @@
 
 **Version 0.1.0**
 
-A MERN stack application template.
+A MERN stack application template for use with Docker and [sloppy.io](http://www.sloppy.io).
 
 Featuring all elements of a web application that would be needed to run a complete MERN environment locally, with docker or on sloppy.io.
 

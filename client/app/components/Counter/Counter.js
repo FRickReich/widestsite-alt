@@ -2,6 +2,10 @@
 
 import React, { Component } from 'react';
 
+import {
+    getFromStorage,
+} from '../../utils/storage';
+
 class Counter extends Component 
 {
     constructor(props)

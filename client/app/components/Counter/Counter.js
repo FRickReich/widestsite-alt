@@ -126,7 +126,7 @@ class Counter extends Component
 
     render()
     {
-        const { counters } = this.state;
+        const { counters, token } = this.state;
 
         return (
             <div>

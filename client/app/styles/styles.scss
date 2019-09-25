@@ -2,37 +2,6 @@
 
 @import 'vendor/normalize';
 
-html 
-{
-    position: relative;
-    min-height: 100%;
-}
-
-body
-{
-    margin: 0 0 100px; 
-    font-family: sans-serif;
-}
-
-.content { 
-    padding: 15px; 
-    box-sizing: border-box;
-    text-align: center;
-}
-
-.footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 100px;
-    width: 100%;
-    color:#FFFFFF; 
-    background: #06303A;
-    font-size:1.5em;
-    text-align: center;
-    line-height:100px;
-}
-
 #topMenu ul
 {
     list-style-type: none;
@@ -66,8 +35,7 @@ body
     background: #3CAFE2;
 }
 
-.content,
-#footer
+.content
 {
     padding: 10px;
 }

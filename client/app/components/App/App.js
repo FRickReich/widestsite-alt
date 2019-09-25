@@ -7,15 +7,15 @@ import Header from '../Header/Header';
 
 const App = ({ children }) => (
     <>
-        <div className="content">
+        <main className="page">
             <Header />
             
-            <section>
+            <div className="content">
                 { children }
-            </section>
-        </div>
-        
-        <Footer id="footer" />
+            </div>
+
+            <Footer className="footer"/>
+        </main>
     </>
 );
 

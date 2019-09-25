@@ -41,8 +41,6 @@ class Counter extends Component
             {
                 if (json.success) 
                 {
-                    this.getUserInfo();
-                    
                     this.setState({
                         token
                     });

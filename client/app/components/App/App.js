@@ -8,8 +8,9 @@ import Header from '../Header/Header';
 const App = ({ children }) => (
     <>
         <main className="page">
+            <Header />
+            
             <div className="content">
-                <Header />
             
                 { children }
             </div>

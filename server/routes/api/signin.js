@@ -221,9 +221,8 @@ module.exports = (app) =>
         const { body } = req;
         const { id } = body;
 
-        User.find({
-            id: id
-        }, (err, users) =>
+        User.findById(id,
+        (err, user) =>
         {
             if (err) 
             {
@@ -232,8 +231,6 @@ module.exports = (app) =>
                   success: false,
                 });
             }
-            
-            const user = users[0];
 
             return res.send({
                 success: true,

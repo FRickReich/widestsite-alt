@@ -6,7 +6,7 @@ import {
     getFromStorage,
 } from '../../utils/storage';
 
-class Counter extends Component 
+class Counter extends Component
 {
     constructor(props)
     {
@@ -39,7 +39,7 @@ class Counter extends Component
             .then(res => res.json())
             .then(json => 
             {
-                if (json.success) 
+                if (json.success)
                 {
                     this.setState({
                         token
@@ -50,7 +50,7 @@ class Counter extends Component
 
         fetch('/api/counters')
         .then(res => res.json())
-        .then(json => 
+        .then(json =>
         {
             this.setState({
                 counters: json
@@ -62,7 +62,7 @@ class Counter extends Component
     {
         fetch('/api/counters', { method: 'POST' })
         .then(res => res.json())
-        .then(json => 
+        .then(json =>
         {
             let data = this.state.counters;
             data.push(json);
@@ -79,7 +79,7 @@ class Counter extends Component
 
         fetch(`/api/counters/${ id }/increment`, { method: 'PUT' })
         .then(res => res.json())
-        .then(json => 
+        .then(json =>
         {
             this.modifyCounter(index, json);
         });
@@ -102,7 +102,7 @@ class Counter extends Component
         const id = this.state.counters[index]._id;
 
         fetch(`/api/counters/${ id }`, { method: 'DELETE' })
-        .then(_ => 
+        .then(_ =>
         {
             this.modifyCounter(index, null);
         });

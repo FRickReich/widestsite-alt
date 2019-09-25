@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import { Link, NavLink } from 'react-router-dom';
 
-class Header extends Component 
+class Header extends Component
 {
     constructor(props)
     {
@@ -12,7 +12,7 @@ class Header extends Component
 
     componentDidMount()
     {
-        
+
     }
 
     

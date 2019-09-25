@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
 
-class Home extends Component 
+class Home extends Component
 {
     constructor(props) 
     {

@@ -152,7 +152,8 @@ module.exports = (app) =>
         });
     });
 
-    app.get('/api/account/verify', (req, res, next) => {
+    app.get('/api/account/verify', (req, res, next) => 
+    {
         // Get the token
         const { query } = req;
         const { token } = query;

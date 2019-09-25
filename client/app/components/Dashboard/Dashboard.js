@@ -8,9 +8,9 @@ import {
     getFromStorage,
 } from '../../utils/storage';
 
-class Dashboard extends Component 
+class Dashboard extends Component
 {
-    constructor(props) 
+    constructor(props)
     {
         super(props);
 
@@ -38,16 +38,16 @@ class Dashboard extends Component
     {
         const obj = getFromStorage('gandhi');
 
-        if (obj && obj.token) 
+        if (obj && obj.token)
         {
             const { token } = obj;
             
             // Verify token
             fetch('/api/account/verify?token=' + token)
             .then(res => res.json())
-            .then(json => 
+            .then(json =>
             {
-                if (json.success) 
+                if (json.success)
                 {
                     this.getUserInfo();
                     
@@ -65,7 +65,7 @@ class Dashboard extends Component
                 }
             });
         }
-        else 
+        else
         {
             this.setState({
                 isLoading: false,
@@ -73,14 +73,14 @@ class Dashboard extends Component
         }
     }
 
-    onTextboxChangeSignUpEmail(event) 
+    onTextboxChangeSignUpEmail(event)
     {
         this.setState({
             signUpEmail: event.target.value,
         });
     }
 
-    onTextboxChangeSignUpPassword(event) 
+    onTextboxChangeSignUpPassword(event)
     {
         this.setState({
             signUpPassword: event.target.value,
@@ -98,11 +98,11 @@ class Dashboard extends Component
             // Verify token
             fetch('/api/account/?id=' + token)
             .then(res => res.json())
-            .then(json => 
+            .then(json =>
             {
                 console.log(json);
 
-                if (json.success) 
+                if (json.success)
                 {
                     this.setState({
                         isLoading: false,
@@ -111,7 +111,7 @@ class Dashboard extends Component
                 }
             });
         }
-        else 
+        else
         {
             this.setState({
                 isLoading: false,
@@ -119,7 +119,7 @@ class Dashboard extends Component
         }
     }
 
-    logout() 
+    logout()
     {
         this.setState({
             isLoading: true,
@@ -127,7 +127,7 @@ class Dashboard extends Component
 
         const obj = getFromStorage('gandhi');
 
-        if (obj && obj.token) 
+        if (obj && obj.token)
         {
             const { token } = obj;
           
@@ -136,7 +136,7 @@ class Dashboard extends Component
             .then(res => res.json())
             .then(json => 
             {
-                if (json.success) 
+                if (json.success)
                 {
                     localStorage.removeItem('gandhi');
 
@@ -161,7 +161,7 @@ class Dashboard extends Component
         }
     }
 
-    onSignIn() 
+    onSignIn()
     {
         const {
             signUpEmail,
@@ -303,7 +303,7 @@ class Dashboard extends Component
                         isLoading ?
                         <p>Loading...</p>
                         :
-                        <div>            
+                        <div>
                             <p>Account</p>
                             <p>email: { userData.email }</p>
                             <p>created: { userData.signUpDate }</p>

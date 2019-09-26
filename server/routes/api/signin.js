@@ -242,7 +242,10 @@ module.exports = (app) =>
 
         UserSession.findById(query.id, (err, data) =>
         {
-            console.log(data);
+            User.findById(data.userId, (err, user) =>
+            {
+                console.log(user);
+            });
         });
 
         /*UserSession.find({

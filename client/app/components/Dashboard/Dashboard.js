@@ -20,8 +20,8 @@ class Dashboard extends Component
             token: '',
             signUpError: '',
             signInError: '',
-            signUpEmail: '',
-            signUpPassword: '',
+            email: '',
+            password: '',
             userData: [  ],
         };
 
@@ -76,7 +76,7 @@ class Dashboard extends Component
     onTextboxChangeSignUpEmail(event)
     {
         this.setState({
-            signUpEmail: event.target.value,
+            email: event.target.value,
         });
     }
 
@@ -164,8 +164,8 @@ class Dashboard extends Component
     onSignIn()
     {
         const {
-            signUpEmail,
-            signUpPassword,
+            email,
+            password,
         } = this.state;
 
         this.setState({
@@ -180,8 +180,8 @@ class Dashboard extends Component
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                email: signUpEmail,
-                password: signUpPassword,
+                email: email,
+                password: password,
             }),
         }).then(res => res.json())
         .then(json => 
@@ -197,8 +197,8 @@ class Dashboard extends Component
                 this.setState({
                     signInError: json.message,
                     isLoading: false,
-                    signUpPassword: '',
-                    signUpEmail: '',
+                    email: '',
+                    password: '',
                     token: json.token,
                 });
             }
@@ -216,8 +216,8 @@ class Dashboard extends Component
     {
         // Grab state
         const {
-            signUpEmail,
-            signUpPassword,
+            email,
+            password,
         } = this.state;
     
         this.setState({
@@ -233,8 +233,8 @@ class Dashboard extends Component
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                email: signUpEmail,
-                password: signUpPassword,
+                email: email,
+                password: password,
             }),
         }).then(res => res.json())
         .then(json =>
@@ -246,8 +246,8 @@ class Dashboard extends Component
                 this.setState({
                     signUpError: json.message,
                     isLoading: false,
-                    signUpEmail: '',
-                    signUpPassword: '',
+                    email: '',
+                    password: '',
                 });
             }
             else    
@@ -266,8 +266,8 @@ class Dashboard extends Component
             isLoading,
             token,
             signInError,
-            signUpEmail,
-            signUpPassword,
+            email,
+            password,
             signUpError,
             userData
         } = this.state;
@@ -317,7 +317,7 @@ class Dashboard extends Component
                         <input
                             type="email"
                             placeholder="Email"
-                            value={ signUpEmail }
+                            value={ email }
                             onChange={ this.onTextboxChangeSignUpEmail }
                         />
 
@@ -326,7 +326,7 @@ class Dashboard extends Component
                         <input
                             type="password"
                             placeholder="Password"
-                            value={ signUpPassword }
+                            value={ password }
                             onChange={ this.onTextboxChangeSignUpPassword }
                         />
 

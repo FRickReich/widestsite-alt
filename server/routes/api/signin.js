@@ -240,8 +240,10 @@ module.exports = (app) =>
         const { body } = req;
         const { id } = body;
 
-        console.log(query);
-        console.log(query.id);
+        UserSession.findById(query.id, (err, data) =>
+        {
+            console.log(data);
+        });
 
         /*UserSession.find({
             id: query.id

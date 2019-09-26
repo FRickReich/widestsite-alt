@@ -240,7 +240,10 @@ module.exports = (app) =>
         const { body } = req;
         const { id } = body;
 
-        UserSession.find({
+        console.log(query);
+        console.log(query.id);
+
+        /*UserSession.find({
             id: query.id
         }, (err, session) =>
         {
@@ -255,6 +258,7 @@ module.exports = (app) =>
             
             console.log(session);
         });
+        */
 
         User.find({
             id: id

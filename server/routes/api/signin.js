@@ -244,49 +244,23 @@ module.exports = (app) =>
         {
             User.findById(data.userId, (err, user) =>
             {
-                console.log(user);
-            });
-        });
-
-        /*UserSession.find({
-            id: query.id
-        }, (err, session) =>
-        {
-            if (err)
-            {
-                console.log(err);
-
-                return res.send({
-                    success: false,
-                });
-            }
-            
-            console.log(session);
-        });
-        */
-
-        User.find({
-            id: id
-        }, (err, users) =>
-        {
-            if (err)
-            {
-                console.log(err);
-
-                return res.send({
-                    success: false,
-                });
-            }
-
-            const user = users[0];
-
-            return res.send({
-                success: true,
-                data:
+                if (err)
                 {
-                    email: user.email,
-                    signUpDate: user.signUpDate
+                    console.log(err);
+
+                    return res.send({
+                        success: false,
+                    });
                 }
+                
+                return res.send({
+                    success: true,
+                    data:
+                    {
+                        email: user.email,
+                        signUpDate: user.signUpDate
+                    }
+                });
             });
         });
     });

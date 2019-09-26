@@ -236,11 +236,12 @@ module.exports = (app) =>
     app.get('/api/account/', (req, res, next) =>
     {
         const { body } = req;
+        const { id } = body;
 
-        console.log("session id: " + body.id);
+        console.log("session id: " + id);
 
         UserSession.find({
-            id: body.id
+            id: id
         }, (err, session) =>
         {
             if (err)
@@ -256,7 +257,7 @@ module.exports = (app) =>
         });
 
         User.find({
-            id: body.id
+            id: id
         }, (err, users) =>
         {
             if (err)

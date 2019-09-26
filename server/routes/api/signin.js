@@ -238,7 +238,7 @@ module.exports = (app) =>
         const { body } = req;
         const { id } = body;
 
-        console.log("session id: " + id);
+        console.log(req);
 
         UserSession.find({
             id: id
@@ -252,8 +252,6 @@ module.exports = (app) =>
                     success: false,
                 });
             }
-    
-            console.log("user id: " + session.userId);
         });
 
         User.find({

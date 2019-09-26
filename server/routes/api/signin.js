@@ -235,10 +235,12 @@ module.exports = (app) =>
 
     app.get('/api/account/', (req, res, next) =>
     {
+        const { query } = req;
+        
         const { body } = req;
         const { id } = body;
 
-        console.log(body);
+        console.log(query);
 
         UserSession.find({
             id: id

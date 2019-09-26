@@ -237,6 +237,24 @@ module.exports = (app) =>
     {
         const { body } = req;
 
+        console.log(body.id);
+
+        UserSession.find({
+            id: body.id
+        }, (err, session) =>
+        {
+            if (err)
+            {
+                console.log(err);
+
+                return res.send({
+                    success: false,
+                });
+            }
+    
+            console.log(session.userId);
+        });
+
         User.find({
             id: body.id
         }, (err, users) =>

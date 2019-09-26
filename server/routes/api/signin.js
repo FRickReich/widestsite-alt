@@ -238,7 +238,7 @@ module.exports = (app) =>
         const { body } = req;
         const { id } = body;
 
-        console.log(req);
+        console.log(body);
 
         UserSession.find({
             id: id

@@ -2,9 +2,9 @@
 
 const Counter = require('../../models/Counter');
 
-module.exports = (app) => 
+module.exports = (app) =>
 {
-    app.get('/api/counters', (req, res, next) => 
+    app.get('/api/counters', (req, res, next) =>
     {
         Counter.find()
         .exec()
@@ -12,7 +12,7 @@ module.exports = (app) =>
         .catch((err) => next(err));
     });
 
-    app.post('/api/counters', function (req, res, next) 
+    app.post('/api/counters', function (req, res, next)
     {
         const counter = new Counter();
 
@@ -21,7 +21,7 @@ module.exports = (app) =>
         .catch((err) => next(err));
     });
 
-    app.delete('/api/counters/:id', function (req, res, next) 
+    app.delete('/api/counters/:id', function (req, res, next)
     {
         Counter.findOneAndDelete({ _id: req.params.id })
         .exec()

@@ -15,7 +15,7 @@ export function getFromStorage(key)
         {
             return JSON.parse(valueStr);
         }
-      
+
         return null;
     }
     catch (err)

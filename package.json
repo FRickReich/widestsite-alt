@@ -3,24 +3,20 @@
     "version": "0.1.0",
     "description": "",
     "author": "F. Rick Reich",
-    "repository":
-    {
+    "repository": {
         "type": "git",
         "url": "git+https://github.com/FRickReich/gandhi"
     },
     "license": "MIT",
     "private": true,
-    "scripts":
-    {
+    "scripts": {
         "start": "webpack -p --progress --profile --colors && node app",
         "start:dev": "node server"
     },
-    "engines":
-    {
+    "engines": {
         "node": ">=6"
     },
-    "dependencies":
-    {
+    "dependencies": {
         "@babel/core": "^7.0.0-beta.42",
         "@babel/preset-env": "^7.0.0-beta.42",
         "@babel/preset-react": "^7.0.0-beta.42",

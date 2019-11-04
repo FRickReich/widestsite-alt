@@ -83,7 +83,7 @@ class Dashboard extends Component
     onTextboxChangeSignUpPassword(event)
     {
         this.setState({
-            signUpPassword: event.target.value,
+            password: event.target.value,
         });
     }
 
@@ -328,8 +328,8 @@ class Dashboard extends Component
                             placeholder="Password"
                             value={ password }
                             onChange={ this.onTextboxChangeSignUpPassword }
-                        />
-
+                                />
+                                
                         <br />
 
                         <button onClick={ this.onSignUp }>Sign Up</button>

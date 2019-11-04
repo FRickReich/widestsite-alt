@@ -3,37 +3,42 @@ services:
 
   web:
     # image: frickreich/gandhi
-    image: node:8
+    build: .
     volumes:
       - ./:/usr/src/app
     working_dir: /usr/src/app
-    command: sh -c 'npm install; npm rebuild node-sass; node app'
+    command: sh -c 'npm install; npm rebuild node-sass; npm install bcrypt; node app'
+    container_name: web
     ports:
-      - "80:3000"
+      - "8080:8080"
     depends_on:
       - mongo
     networks:
       - all
     environment:
-      DATABASE_URL: "mongodb://mongo/db"
+      DATABASE_URL: "mongodb://mongo:27017/db"
+      PORT: 8080
 
   mongo:
     image: mongo:3
-    command: mongod --smallfiles
+    container_name: mongo
+    command: mongod --smallfiles --bind_ip_all
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
     networks:
       - all
-    volumes:
-      - /tmp/db/:/data/db
-      - /tmp/config:/data/configdb
 
-  mongoexpress:
-    image: mongo-express
-    restart: always
+  mongo-express:
+    image: "mongo-express:latest"
+    container_name: mongo-express
     ports:
-      - "8081:8081"
-    links:
-      - 'mongo:mongo'
-    environment:
-      - ME_CONFIG_MONGODB_SERVER=mongo
+      - 8081:8081
+    restart: always
+    depends_on:
+      - mongo
+    networks:
+      - all
 networks:
   all:

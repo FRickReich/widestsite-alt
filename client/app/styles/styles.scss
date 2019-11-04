@@ -42,6 +42,10 @@
 
 .scroll-box
 {
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;

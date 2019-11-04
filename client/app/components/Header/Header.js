@@ -35,6 +35,9 @@ class Header extends Component
                             <NavLink to="/dashboard" activeClassName="active">Dashboard</NavLink>
                         </li>
                         <li>
+                            <NavLink to="/container" activeClassName="active">Container</NavLink>
+                        </li>
+                        <li>
                             <NavLink to="/asdf" activeClassName="active">404 Page</NavLink>
                         </li>
                     </ul>

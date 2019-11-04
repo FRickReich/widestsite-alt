@@ -16,6 +16,7 @@ import Home from './components/Home/Home';
 import Counter from './components/Counter/Counter';
 import Repos from './components/Repos/Repos';
 import Dashboard from './components/Dashboard/Dashboard';
+import Container from './components/Container/Container';
 
 import './styles/styles.scss';
 
@@ -27,6 +28,7 @@ render((
                 <Route path="/counter" component={ Counter } />
                 <Route path="/repos" component={ Repos } />
                 <Route path="/dashboard" component={ Dashboard } />
+                <Route path="/container" component={ Container } />
                 <Route component={NotFound}/>
             </Switch>
         </App>

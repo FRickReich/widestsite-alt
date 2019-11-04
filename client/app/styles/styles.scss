@@ -39,3 +39,21 @@
 {
     padding: 10px;
 }
+
+.scroll-box
+{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: 100px;
+
+    .unit
+    {
+        flex: 0 0 auto;
+        height: 98px;
+        width: 98px;
+        border: 1px solid gainsboro;
+        background: white;
+    }
+}

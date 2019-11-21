@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  build:
+  deploy-prod:
     docker:
       # specify the version you desire here
       - image: circleci/node:7.10
@@ -20,3 +20,16 @@ jobs:
       - checkout
 
       - run: ssh -oStrictHostKeyChecking=no -v $DROPLET_USER@$DROPLET_IP ""./widestsite/deploy_project.sh"
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy-prod:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - build

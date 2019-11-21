@@ -19,7 +19,7 @@ jobs:
     steps:
       - checkout
 
-      - run: ssh -oStrictHostKeyChecking=no -v $DROPLET_USER@$DROPLET_IP "./widestsite/deploy_project.sh"
+      - run: ssh -oStrictHostKeyChecking=no -v $DROPLET_USER@$DROPLET_IP "./widestsite/widestsite/deploy_project.sh"
 
 workflows:
   version: 2

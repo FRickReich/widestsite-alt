@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 
-class Footer extends Component 
+class Footer extends Component
 {
     constructor(props)
     {
@@ -19,7 +19,7 @@ class Footer extends Component
         return (
             <footer>
                 <hr />
-                <p>test © 2019 by <a href="mailto:frickreich@gmail.com">F. Rick Reich</a></p>
+                <p>widestsite © 2019 by <a href="mailto:#">F. Rick Reich</a></p>
             </footer>
         )
     }

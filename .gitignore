@@ -1,5 +1,6 @@
-*.DS_Store
-/node_modules
 /_LEGACY
-/dist
+/node_modules
+/public
 /data
+*.DS_Store
+.env

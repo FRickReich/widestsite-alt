@@ -7,6 +7,6 @@ COPY . /usr/src/app/
 RUN npm install
 
 ARG CACHEBUST=1
-CMD [ "node", "app.js" ]
+CMD [ "npm", "start" ]
 
 EXPOSE 8080
